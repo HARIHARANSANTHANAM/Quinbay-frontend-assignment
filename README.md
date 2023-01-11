@@ -6,7 +6,7 @@
 <ul>
   <li>Header - It Contains Search bar and search button</li>
   <li>Right Section (3/4th) - Should contain list of mobiles with necessary details in each row</li>
-  <li>Left Section (1/4th) - Add new mobile section using form tags<li>
+  <li>Left Section (1/4th) - Add new mobile section using form tags</li>
 </ul>
 
 <h4>Output Screenshots for task-1</h4>
