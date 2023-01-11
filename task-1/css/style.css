@@ -1,0 +1,72 @@
+body{
+    box-sizing: border-box;
+    margin:2px 1px;
+    font-family: sans-serif;
+}
+.header {
+    display: flex;
+    position: sticky;
+    top: 0%;
+    justify-content: space-between;
+    align-items: center;
+    border:2px solid black;
+    z-index: 10;
+}
+.search{
+    width: 100%;
+  padding: 12px 20px;
+  margin: 5px 5px;
+  box-sizing: border-box;
+}
+
+.searchBtn{
+  padding: 12px 20px;
+  margin: 5px 5px;
+  box-sizing: border-box;
+    color: white;
+    background-color: #2874f0;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+
+.btn{
+  padding: 12px 20px;
+  margin: 5px 5px;
+  box-sizing: border-box;
+    color: white;
+    background-color: #2874f0;
+    border: 3px solid white;
+    border-radius: 5px;
+}
+.text-white{
+    color: white;
+}
+
+.danger{
+background-color: red;
+}
+.success{
+    background-color: rgb(26, 186, 26);
+}
+.warning{
+    background-color: orange;
+}
+
+forms label,input{
+    margin:5px 5px;
+}
+
+.body{
+    display: grid;
+    grid-template-columns: .5fr 2fr;
+    column-gap: 1rem;
+}
+
+.body aside{
+ border-right:2px solid black;
+ min-height: 100vh;
+}
+
+forms label{
+    font-size: small;
+}

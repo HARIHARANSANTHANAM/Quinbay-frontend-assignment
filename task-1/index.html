@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task -1</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+</head>
+<body>
+    <div class="header">
+            <input type="text" placeholder="Search.." class="search">
+            <button class="searchBtn">Search</button>
+    </div>
+    <div class="body">
+    <aside>
+        <section>
+            <h1><center>Add new Mobiles</center></h1>
+            <hr>
+            <forms>
+                <label>Mobile Name: </label>
+                <input type="text"><br>
+                <label>RAM Size: </label>
+                <input type="number" min="2" max="14">
+                <label>ROM Size: </label>
+                <input type="number" min="32" max="1024"><br>
+                <label>Price:</label>
+                <input type="number"><br>
+                <center>
+                <button class="btn">Add Mobile</button>
+            </center>
+            </forms>
+        </section>
+    </aside>
+    <section>
+        <h1>Mobiles Available</h1>
+        <table border="2">
+            <thead>
+                <th>Mobile Name</th>
+                <th>Brand</th>
+                <th>Image</th>
+                <th>Rating</th>
+                <th>RAM Size</th>
+                <th>ROM Size</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>Google Pixel 7 (Obsidian, 128 GB)</td>
+                        <td>Google</td>
+                        <td><img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)" width="100" height="100"></td>
+                        <td>4.4 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 59,999</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>REDMI 10 (Midnight Black, 64 GB)</td>
+                        <td>Redmi</td>
+                        <td><img src="./assets/Image/redmi_10.jpg" alt="REDMI 10 (Midnight Black, 64 GB)" width="100" height="100"></td>
+                        <td>4.3 Ratings</td>
+                        <td>4GB RAM</td>
+                        <td>64GB ROM</td>
+                        <td>Rs 9,999</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>SAMSUNG Galaxy A23 (Black, 128 GB)  (6 GB RAM)</td>
+                        <td>Samsung</td>
+                        <td><img src="./assets/Image/Galaxy_A23.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)" width="100" height="100"></td>
+                        <td>4.2 Ratings</td>
+                        <td>6GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 44,999</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+</body>
+</html>
