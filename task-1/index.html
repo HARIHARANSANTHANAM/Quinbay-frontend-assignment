@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,height=device-height">
     <title>Task -1</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+<script src="./js/index.js"></script>
 <body>
     <div class="header">
             <div class="logo">
-                <img src="./assets/Image/blibli.jpg"/>
+                <img style="max-width:100%;" src="./assets/Image/blibli.jpg"/>
             </div>
+            
+            <div class="search_nav_container">
+            <div class="searchcontainer"> 
+                <form id="searchform" style="display:flex">
+            <input type="text" placeholder="Search.." class="search" >
+            <submit class="searchBtn" onclick="Search()" style="cursor:pointer">Search</submit>
+        </form>
+            </div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="products.html" >Products</a>
+                <a href="#" >Contactus</a>
+            </nav>
+            <nav class="show-sm">
 
-            <div>
-            <input type="text" placeholder="Search.." class="search">
-            <button class="searchBtn">Search</button>
+                <a href="#">Home</a>
+                <a href="products.html" >Products</a>
+                <a href="#" >Contactus</a>
+            </nav>
         </div>
     </div>
     <div class="body">
@@ -23,34 +40,237 @@
         <section>
             <h1><center>Add new Mobiles</center></h1>
             <hr>
-            <form>
-                <label>Mobile Name: </label>
-                <input type="text" placeholder="Mobile Name"><br>
-                <label>RAM Size: </label>
-                <select>
-                    <option>4GB</option>
-                    <option>6GB</option>
-                    <option>8GB</option>
-                </select><br/>
-                <label>ROM Size: </label>
-                <select>
-                    <option>32GB</option>
-                    <option>64GB</option>
-                    <option>128GB</option>
-                    <option>256GB</option>
-                </select>
-                <br>
-                <label>Price:</label>
-                <input type="number"><br>
+            <div class="container">
+            <form onsubmit="addMobile(event)" id="addMobileForm">
+                <div class="row">
+                    <div class="col-25">
+                        <label>Mobile Name: </label>
+                    </div>
+                    <div class="col-75">
+                        <input type="text" placeholder="Mobile Name" id="mobilename">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>RAM Size: </label> 
+                    </div>
+                    <div class="col-75">
+                        <select id="RAM">
+                            <option>4GB</option>
+                            <option>6GB</option>
+                            <option>8GB</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label>ROM Size: </label>
+                    </div>
+                    <div class="col-75">
+                        <select id="ROM">
+                            <option>32GB</option>
+                            <option>64GB</option>
+                            <option>128GB</option>
+                            <option>256GB</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Price:</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="number" id="price" min="1">
+                    </div>
+                </div>
+                   
+                      <br>
                 <center>
                 <button class="btn">Add Mobile</button>
             </center>
             </form>
+        </div>
+        <h1><center>Filters</center></h1>
+        <hr>
+        <div class="container">
+            <form>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Brand</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="checkbox" name="Apple" value="Apple" >Apple<br>
+                        <input type="checkbox" name="Redmi" value="Redmi">Redmi<br>
+                        <input type="checkbox" name="Samsung">Samsung<br>
+                        <input type="checkbox" name="Apple">Google<br>   
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Price:</label> 
+                    </div>
+                    <div class="col-75">
+                        <input type="range" min="4000" max="120000">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>RAM Size: </label> 
+                    </div>
+                    <div class="col-75">
+                        <select>
+                            <option>4GB</option>
+                            <option>6GB</option>
+                            <option>8GB</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label>ROM Size: </label>
+                    </div>
+                    <div class="col-75">
+                        <select>
+                            <option>32GB</option>
+                            <option>64GB</option>
+                            <option>128GB</option>
+                            <option>256GB</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Ratings:</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="range" min="1" max="5">
+                    </div>
+                </div>
+                   
+                      <br>
+            </form>
+        </div>
+
         </section>
     </aside>
-    <section>
-        <h1>Mobiles Available</h1>
-        <table>
+    <section class="mobiles">
+        <h1>List of mobiles</h1>
+        <div class="cards">
+        <div class="card">
+            <div class="image">
+                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
+            </div>
+            <div class="info">
+                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
+                    <br>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    4.4 Ratings<br>
+                    <h2>Rs 59,999</h3>
+                
+            </div>
+            <button class="btn success">Add to Cart</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
+            </div>
+            <div class="info">
+                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
+                    <br>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    4.4 Ratings<br>
+                    <h2>Rs 59,999</h3>
+                
+            </div>
+            <button class="btn success">Add to Cart</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
+            </div>
+            <div class="info">
+                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
+                    <br>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    4.4 Ratings<br>
+                    <h2>Rs 59,999</h3>
+                
+            </div>
+            <button class="btn success">Add to Cart</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
+            </div>
+            <div class="info">
+                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
+                    <br>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    4.4 Ratings<br>
+                    <h2>Rs 59,999</h3>
+                
+            </div>
+            <button class="btn success">Add to Cart</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
+            </div>
+            <div class="info">
+                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
+                    <br>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    4.4 Ratings<br>
+                    <h2>Rs 59,999</h3>
+                
+            </div>
+            <button class="btn success">Add to Cart</button>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
+            </div>
+            <div class="info">
+                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
+                    <br>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    4.4 Ratings<br>
+                    <h2>Rs 59,999</h3>
+                
+            </div>
+            <button class="btn success">Add to Cart</button>
+        </div>
+    </div>
+
+    <h1>Mobiles Available</h1>
+    <div style="overflow-x:auto">
+        <table  class="list-mobiles">
             <thead>
                 <th>Mobile Name</th>
                 <th>Brand</th>
@@ -102,9 +322,104 @@
                         <td>Rs 73,990</td>
                         <td><button class="btn success">Add to Cart</button></td>
                     </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
+                    <tr>
+                        <td>APPLE iPhone 14 (Starlight, 128 GB)</td>
+                        <td>Apple</td>
+                        <td><img src="./assets/Image/Apple_14.jpg" alt="APPLE iPhone 14 (Starlight, 128 GB)" width="100" height="100"></td>
+                        <td>4.6 Ratings</td>
+                        <td>8GB RAM</td>
+                        <td>128GB ROM</td>
+                        <td>Rs 73,990</td>
+                        <td><button class="btn success">Add to Cart</button></td>
+                    </tr>
             </tbody>
         </table>
+    </div>
     </section>
+
+    <div class="cart container">
+        <div>
+            Shopping Cart
+        </div> 
+    </div>
 </div>
+<footer>
+
+    <h5 class="content">
+    All rights are reserved Copyrights@2023
+</h5>
+
+<button class="btn">Check out</button>
+</footer>
 </body>
 </html>
