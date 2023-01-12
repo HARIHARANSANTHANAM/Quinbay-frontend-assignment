@@ -9,32 +9,48 @@
 </head>
 <body>
     <div class="header">
+            <div class="logo">
+                <img src="./assets/Image/blibli.jpg"/>
+            </div>
+
+            <div>
             <input type="text" placeholder="Search.." class="search">
             <button class="searchBtn">Search</button>
+        </div>
     </div>
     <div class="body">
     <aside>
         <section>
             <h1><center>Add new Mobiles</center></h1>
             <hr>
-            <forms>
+            <form>
                 <label>Mobile Name: </label>
-                <input type="text"><br>
+                <input type="text" placeholder="Mobile Name"><br>
                 <label>RAM Size: </label>
-                <input type="number" min="2" max="14">
+                <select>
+                    <option>4GB</option>
+                    <option>6GB</option>
+                    <option>8GB</option>
+                </select><br/>
                 <label>ROM Size: </label>
-                <input type="number" min="32" max="1024"><br>
+                <select>
+                    <option>32GB</option>
+                    <option>64GB</option>
+                    <option>128GB</option>
+                    <option>256GB</option>
+                </select>
+                <br>
                 <label>Price:</label>
                 <input type="number"><br>
                 <center>
                 <button class="btn">Add Mobile</button>
             </center>
-            </forms>
+            </form>
         </section>
     </aside>
     <section>
         <h1>Mobiles Available</h1>
-        <table border="2">
+        <table>
             <thead>
                 <th>Mobile Name</th>
                 <th>Brand</th>
