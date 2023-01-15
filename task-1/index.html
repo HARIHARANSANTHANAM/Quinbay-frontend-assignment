@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,height=device-height">
     <title>Task -1</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
 </head>
-<script src="./js/index.js"></script>
+
+
 <body>
     <div class="header">
             <div class="logo">
@@ -19,7 +21,7 @@
             <div class="searchcontainer"> 
                 <form id="searchform" style="display:flex">
             <input type="text" placeholder="Search.." class="search" >
-            <submit class="searchBtn" onclick="Search()" style="cursor:pointer">Search</submit>
+            <submit class="searchBtn" onclick="demopromise()" style="cursor:pointer">Search</submit>
         </form>
             </div>
             <nav>
@@ -68,6 +70,11 @@
                         <label>ROM Size: </label>
                     </div>
                     <div class="col-75">
+                        <!-- <input type="radio" name="32" value="32GB"/>
+
+                        <input type="radio" name="64" value="32GB"/>
+
+                        <input type="radio" name="128" value="32GB"/> -->
                         <select id="ROM">
                             <option>32GB</option>
                             <option>64GB</option>
@@ -86,24 +93,36 @@
                 </div>
                    
                       <br>
+                      
                 <center>
                 <button class="btn">Add Mobile</button>
+                <!-- <button id="example"  type="button"> Example </button> -->
             </center>
             </form>
         </div>
         <h1><center>Filters</center></h1>
         <hr>
         <div class="container">
-            <form>
+            <form id="filter-form" >
                 <div class="row">
                     <div class="col-25">
                         <label>Brand</label>
                     </div>
                     <div class="col-75">
-                        <input type="checkbox" name="Apple" value="Apple" >Apple<br>
-                        <input type="checkbox" name="Redmi" value="Redmi">Redmi<br>
-                        <input type="checkbox" name="Samsung">Samsung<br>
-                        <input type="checkbox" name="Apple">Google<br>   
+                        <input type="checkbox" name="brand" value="Apple" >Apple<br>
+                        <input type="checkbox" name="brand" value="Redmi">Redmi<br>
+                        <input type="checkbox" name="brand" value="Iqoo">Iqoo<br>
+                        <input type="checkbox" name="brand" value="Google">Google<br>   
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label>Color</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="checkbox" name="color" value="red" >red<br>
+                        <input type="checkbox" name="color" value="green">green<br>
+                        <input type="checkbox" name="color" value="gold">gold<br>
                     </div>
                 </div>
                 <div class="row">
@@ -111,33 +130,7 @@
                         <label>Price:</label> 
                     </div>
                     <div class="col-75">
-                        <input type="range" min="4000" max="120000">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label>RAM Size: </label> 
-                    </div>
-                    <div class="col-75">
-                        <select>
-                            <option>4GB</option>
-                            <option>6GB</option>
-                            <option>8GB</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-25">
-                        <label>ROM Size: </label>
-                    </div>
-                    <div class="col-75">
-                        <select>
-                            <option>32GB</option>
-                            <option>64GB</option>
-                            <option>128GB</option>
-                            <option>256GB</option>
-                        </select>
+                        <input type="range" name="price" min="12000" max="120000">
                     </div>
                 </div>
                 <div class="row">
@@ -145,11 +138,14 @@
                         <label>Ratings:</label>
                     </div>
                     <div class="col-75">
-                        <input type="range" min="1" max="5">
+                        <input type="range" name="ratings" min="1" max="5">
                     </div>
                 </div>
                    
                       <br>
+                      <center>
+                      <button class="btn" type="submit">Apply Filters</button>
+                    </center>
             </form>
         </div>
 
@@ -157,7 +153,7 @@
     </aside>
     <section class="mobiles">
         <h1>List of mobiles</h1>
-        <div class="cards">
+        <div class="cards" id="cards">
         <div class="card">
             <div class="image">
                 <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
@@ -175,97 +171,7 @@
                 
             </div>
             <button class="btn success">Add to Cart</button>
-        </div>
-        <div class="card">
-            <div class="image">
-                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
-            </div>
-            <div class="info">
-                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
-                    <br>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    4.4 Ratings<br>
-                    <h2>Rs 59,999</h3>
-                
-            </div>
-            <button class="btn success">Add to Cart</button>
-        </div>
-        <div class="card">
-            <div class="image">
-                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
-            </div>
-            <div class="info">
-                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
-                    <br>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    4.4 Ratings<br>
-                    <h2>Rs 59,999</h3>
-                
-            </div>
-            <button class="btn success">Add to Cart</button>
-        </div>
-        <div class="card">
-            <div class="image">
-                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
-            </div>
-            <div class="info">
-                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
-                    <br>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    4.4 Ratings<br>
-                    <h2>Rs 59,999</h3>
-                
-            </div>
-            <button class="btn success">Add to Cart</button>
-        </div>
-        <div class="card">
-            <div class="image">
-                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
-            </div>
-            <div class="info">
-                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
-                    <br>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    4.4 Ratings<br>
-                    <h2>Rs 59,999</h3>
-                
-            </div>
-            <button class="btn success">Add to Cart</button>
-        </div>
-        <div class="card">
-            <div class="image">
-                <img src="./assets/Image/pixel7.jpg" alt="Google Pixel 7 (Obsidian, 128 GB)">    
-            </div>
-            <div class="info">
-                <h3>Google Pixel 7 (Obsidian, 128 GB)</h3>
-                    <br>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    4.4 Ratings<br>
-                    <h2>Rs 59,999</h3>
-                
-            </div>
-            <button class="btn success">Add to Cart</button>
-        </div>
+        </div>  
     </div>
 
     <h1>Mobiles Available</h1>
@@ -407,10 +313,15 @@
     </div>
     </section>
 
-    <div class="cart container">
+    <div id="cart" class="cart container">
+
         <div>
             Shopping Cart
-        </div> 
+        </div> <br>
+        <div class="cart_products" id="cart_products">
+    </div>
+        
+
     </div>
 </div>
 <footer>
@@ -419,7 +330,12 @@
     All rights are reserved Copyrights@2023
 </h5>
 
-<button class="btn">Check out</button>
+<button class="btn" onclick="checkout()">Check out</button>
 </footer>
+
+<script src="./js/index.js" ></script>
+<script src="./js/filterProducts.js" type="module"></script>
+<script src="./js/cart.js" type="module" defer></script>
+<script src="./js/product.js" type="module"></script>
 </body>
 </html>
