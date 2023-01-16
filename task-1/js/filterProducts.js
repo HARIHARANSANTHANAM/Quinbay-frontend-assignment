@@ -1,7 +1,7 @@
 import product_list from './productlist.js';
 import {fetchProducts} from './product.js';
 
-window.selectedCategories = {
+ selectedCategories = {
         brand: [],
         color: [],
         price :{
@@ -60,7 +60,7 @@ window.selectedCategories = {
       
       var brandCheckboxes = document.querySelectorAll('input[name="brand"]');
 brandCheckboxes.forEach(function(checkbox) {
-  checkbox.addEventListener("change", updateSelectedCategories);
+  checkbox.addEventListener("change",(e)=>{ updateSelectedCategories(e)});
 });
 
 var colorCheckboxes = document.querySelectorAll('input[name="color"]');
