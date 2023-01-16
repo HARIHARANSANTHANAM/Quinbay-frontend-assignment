@@ -161,3 +161,4 @@ window.addtoCart=(product)=>{
 window.checkout=()=>{
         alert(Globalcart.length+" products in the shopping cart");
     }
+

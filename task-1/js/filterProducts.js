@@ -1,7 +1,7 @@
 import product_list from './productlist.js';
 import {fetchProducts} from './product.js';
 
- selectedCategories = {
+ window.selectedCategories = {
         brand: [],
         color: [],
         price :{
@@ -37,7 +37,7 @@ import {fetchProducts} from './product.js';
         selectedCategories[event.target.name].max= parseInt(event.target.max);
       }
       
-    window.filterItems=function(event) {
+window.filterItems=function(event) {
         event.preventDefault();
         console.log(selectedCategories)
         var filteredItems = product_list.filter(function(item) {

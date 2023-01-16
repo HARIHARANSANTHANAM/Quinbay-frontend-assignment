@@ -1,7 +1,4 @@
 
-
-
-
 function Search()
 {
   alert("hi")
@@ -19,12 +16,16 @@ NodeList.prototype.renderNodes=function(callback)
     } 
 }
 
+// document.getElementById("filter-form").addEventListener("submit",(e)=>{
+//     console.log(e)
+//     filterproduct.filterItems(e)
+// })
 
 const FetchURL=(url)=>{
     
     return new Promise((res,rej)=>{
     setTimeout(function processing(){
-        success=true;
+        success=false;
         if(success)
         {
             res(url+" is fetched");
@@ -36,14 +37,20 @@ const FetchURL=(url)=>{
 })
 }
 
-const demopromise=function ()
+const demopromise=async function ()
 {
-    FetchURL("www.google.com").then((res)=>{
-        console.log(res);
-        alert(res)
-    }).catch(err=>{
-        console.log(error);
-    })
+    // FetchURL("www.google.com").then((res)=>{
+    //     console.log(res);
+    //     alert(res)
+    // }).catch(err=>{
+    //     console.log(error);
+    // })
+
+    const data=await FetchURL("www.google.com");
+    // .then((res)=>alert(res)).catch((e)=>alert("error is catched "+e));
+
+    console.log(data);
+    alert(data);
 }
 
 function addMobile(event)
@@ -118,3 +125,10 @@ function add()
 
 
 
+// async function f(){
+//     let promise=new Promise((resolve,reject)=>{
+//         setTimeout(() => {
+//             resolve("")
+//         }, 5000);
+//     })
+// }
