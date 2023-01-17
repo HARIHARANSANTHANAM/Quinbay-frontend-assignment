@@ -28,66 +28,6 @@
     <div class="body">
     <aside>
         <section>
-            <!-- <h1><center>Add new Mobiles</center></h1>
-            <hr>
-            <div class="container">
-            <form id="addMobileForm">
-                <div class="row">
-                    <div class="col-25">
-                        <label>Mobile Name: </label>
-                    </div>
-                    <div class="col-75">
-                        <input type="text" placeholder="Mobile Name" id="mobilename">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label>RAM Size: </label> 
-                    </div>
-                    <div class="col-75">
-                        <select id="RAM">
-                            <option>4GB</option>
-                            <option>6GB</option>
-                            <option>8GB</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-25">
-                        <label>ROM Size: </label>
-                    </div>
-                    <div class="col-75">
-                        <input type="radio" name="32" value="32GB"/>
-
-                        <input type="radio" name="64" value="32GB"/>
-
-                        <input type="radio" name="128" value="32GB"/>
-                        <select id="ROM">
-                            <option>32GB</option>
-                            <option>64GB</option>
-                            <option>128GB</option>
-                            <option>256GB</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-25">
-                        <label>Price:</label>
-                    </div>
-                    <div class="col-75">
-                        <input type="number" id="price" min="1">
-                    </div>
-                </div>
-                   
-                      <br>
-                      
-                <center>
-                <button class="btn">Add Mobile</button>
-                <button id="example"  type="button"> Example </button>
-            </center>
-            </form>
-        </div> -->
         <h1><center>Filters</center></h1>
         <hr>
         <div class="container">
@@ -113,13 +53,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-25">
-                        <label>Price:</label> 
+                <div class="col-25">
+                        <label>Price</label>
                     </div>
                     <div class="col-75">
-                        <input type="range" name="price" v-model="price.value" :min="price.min" :max="price.max">{{numberWithCommas(price.value)}}
+                         <div v-for="(pricerange,index) in Object.entries(pricerange)" :key="index">
+                        <input type="checkbox" v-model="selectedPrice" name="color" :value="pricerange[1]" >{{pricerange[0]}}
+                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-25">
                         <label>Ratings:</label>
