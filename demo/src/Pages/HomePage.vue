@@ -1,74 +1,56 @@
 <template>
 <div id="body">
-    <div class="header">
-            <div class="logo">
-                <img style="max-width:100%;" src="https://www.static-src.com/frontend/static/img/logo-blibli-white.f8255fc.svg"/>
-            </div>
-            
-            <div class="search_nav_container">
-            <div class="searchcontainer"> 
-                <form id="searchform" style="display:flex" @submit.prevent="searchProduct">
-            <input type="text" placeholder="Search.." class="search" v-model="searchQuery">
-            <button class="searchBtn" style="cursor:pointer" >Search</button>
-        </form>
-            </div>
-            <nav>
-                <a href="#">Home</a>
-                <a href="products.html" >Products</a>
-                <a href="#" >Contactus</a>
-            </nav>
-            <nav class="show-sm">
-
-                <a href="#">Home</a>
-                <a href="products.html" >Products</a>
-                <a href="#" >Contactus</a>
-            </nav>
-        </div>
-    </div>
+    <HeaderComponent @search="search" @cart="cartpage"/>
     <div class="body">
     <aside>
         <section>
-        <h1><center>Filters</center></h1>
+        <h3><center>Filters</center></h3>
         <hr>
         <div class="container">
             <form id="filter-form" >
                 <div class="row">
                     <div class="col-25">
-                        <label>Brand</label>
+                        <label style="font-weight:900">Brand</label>
                     </div>
                     <div class="col-75">
-                        <div v-for="(brand,index) in renderFilter.brand" :key="index">
-                        <input type="checkbox"  v-model="selectedBrand" name="brand" :value="brand" >{{brand}}
+                        <div id="rr-element" v-for="(brand,index) in renderFilter.brand" :key="index">
+                        <input type="checkbox"  v-model="selectedBrand" name="brand" :value="brand" >
+                        <label>{{brand}}</label>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-25">
-                        <label>Color</label>
+                        <label style="font-weight:900">Color</label>
                     </div>
                     <div class="col-75">
-                         <div v-for="(color,index) in renderFilter.color" :key="index">
-                        <input type="checkbox" v-model="selectedColor" name="color" :value="color" >{{color}}
+                         <div id="rr-element" v-for="(color,index) in renderFilter.color" :key="index">
+                        <input type="checkbox" v-model="selectedColor" name="color" :value="color" >
+                        <label>{{color}}</label>
                          </div>
                     </div>
                 </div>
                 <div class="row">
                 <div class="col-25">
-                        <label>Price</label>
+                        <label style="font-weight:900">Price</label>
                     </div>
                     <div class="col-75">
-                         <div v-for="(pricerange,index) in Object.entries(pricerange)" :key="index">
-                        <input type="checkbox" v-model="selectedPrice" name="color" :value="pricerange[1]" >{{pricerange[0]}}
+                         <div id="rr-element" v-for="(pricerange,index) in Object.entries(pricerange)" :key="index">
+                        <input type="checkbox" v-model="selectedPrice" name="color" :value="pricerange[1]" >
+                          <label>{{pricerange[0]}}</label>
                          </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-25">
-                        <label>Ratings:</label>
+                        <label style="font-weight:900">Ratings</label>
                     </div>
                     <div class="col-75">
-                          <input type="range" name="ratings" v-model="ratings.value" :min="ratings.min" :max="ratings.max">{{ratings.value}}
+                     <div id="rr-element" >
+                          <input type="range" name="ratings" v-model="ratings.value" :min="ratings.min" :max="ratings.max">
+                          <label>{{ratings.value}}</label>
+                     </div>
                     </div>
                 </div>
                    
@@ -82,7 +64,7 @@
         </section>
     </aside>
     <section class="mobiles">
-        <h1>List of mobiles</h1>
+        <h3>List of mobiles</h3>
         <div class="cards" id="cards">
         <div class="card" v-for="(product,index) in filterProducts" :key="index">
             <div class="image">
@@ -90,7 +72,7 @@
             </div>
             <div class="info">
             <div style="padding:.5rem">
-            <h3>{{product.model}}</h3>
+            <h6>{{product.model}}</h6>
                 brand: {{product.name}}
              
                     <span class="fa fa-star checked"></span>
@@ -99,17 +81,17 @@
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>|
                     {{product.rating}} Ratings<br>
-                    <h4>Color:{{product.color}}</h4>
-                    <h2>Rs {{numberWithCommas(product.price)}}</h2>
-                     <h4 v-if="product.stock">Stock: {{product.stock}}</h4>
-                    <h4 :class="{'warning-text':true}" v-else>Unavailable</h4>
+                    <h6>Color:{{product.color}}</h6>
+                    <h2 style="text-align:end">$ {{product.price | CurrencySepeartor}}</h2>
+                     <h6 v-if="product.stock">Stock: {{product.stock}}</h6>
+                    <h6 :class="{'warning-text':true}" v-else>Unavailable</h6>
             </div>
             </div>
             <button class="btn success" @click="addtoCart(product)" :disabled="product.stock<1">Add to Cart</button>
         </div>  
     </div>
     </section>
-    <div id="cart" class="cart container">
+    <!-- <div id="cart" class="cart container">
 
         <div>
             Shopping Cart
@@ -118,20 +100,20 @@
     </div>
         
 
-    </div>
+    </div> -->
 </div>
-<footer>
+<!-- <footer>
 
     <h5 class="content">
     All rights are reserved Copyrights@2023
 </h5>
 
 <button class="btn" onclick="checkout()">Check out</button>
-</footer>
+</footer> -->
 
 </div>
 </template>
 
-<link rel="stylesheet" src="../styles/index.css"/>
+<link rel="stylesheet" src="../styles/index.css" />
 
 <script src="./js/HomePage.js"></script>
