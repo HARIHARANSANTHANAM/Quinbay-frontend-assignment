@@ -1,0 +1,19 @@
+export default{
+    name:'ProductComponent',
+    props:{
+       product:{
+        type:Object,
+        default:{}
+       }
+    },
+    methods:{
+        addtoCart(product){
+            product.stock-=1;
+            this.updateCart(product);
+        },
+        showProductPage(){
+            console.log(this.product)
+            this.$router.push({name:'ProductDescriptionPage',query:{product:this.product}})
+        }
+    }
+}

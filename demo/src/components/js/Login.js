@@ -1,24 +1,14 @@
-import { mapActions } from "vuex";
-
+import { mapActions, mapGetters } from "vuex";
+import Login from '../../mixins/Login';
 export default {
-    name:"MyInfo",
-    props:{
-        users:[]
-    },
+    name:"LoginComponent",
     methods : {
         ...mapActions(['checkLogin']),
-         Signin(e){
-            e.preventDefault();
-                let user=this.users.find((user)=>this.userName===user.userName && user.password===this.password);
-                console.log(user)
-                if(user){
-                this.checkLogin(user);
-                }
-                else{
-                    alert("Invalid Username and Password")
-                }
-         }
     },
+    computed:{
+        ...mapGetters(['users'])
+    },
+    mixins:[Login],
     data(){
         return{
             userName:'',

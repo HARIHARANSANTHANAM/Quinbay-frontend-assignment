@@ -1,22 +1,43 @@
+import axios from 'axios';
 import {mapGetters,mapActions} from 'vuex'
 import HeaderComponent from '../../components/HeaderComponent.vue';
+import ProductCardComponent from '../../components/ProductCardComponent.vue'
 
 export default{
     name:"HomePage",
     components:{
-        HeaderComponent
+        HeaderComponent,
+        ProductCardComponent
+    },
+    computed:{
+        // ...mapGetters(['information']),    
+        ...mapGetters(['user','products']),
+        ...mapActions(['setProducts']),
+    
+    },
+    created(){
+        console.log(this.$router.query)
+       this.fetchProducts("all")
     },
     methods:{
 
-        ...mapActions(['setLogout','updateCart']),
+       async fetchProducts(searchValue){
+        try{
+            const res=await axios.get(`https://www.blibli.com/backend/search/products?searchTerm=${searchValue}&start=0&itemPerPage=24`);
+             this.$store.dispatch('setProducts',res.data.data.products);
+             this.filterProducts=[...res.data.data.products];
+            console.log(res.data.data.products);
+            }
+            catch(e)
+            {
+                console.log(e)
+            }
+       },
         stockAvailable(product){
             alert(product.stock+" is available")
         },
         
-        addtoCart(product){
-            product.stock-=1;
-            this.updateCart(product);
-        },
+        
         returnMinMaxPricerange()
         {
 
@@ -34,9 +55,9 @@ export default{
            
             $event.preventDefault();
             this.filterProducts=[...this.products];
+            let MinMax=this.selectedPrice.length>0?this.returnMinMaxPricerange():true;
             let filteredItems = this.filterProducts.filter(item => {
                 let matchBrand = this.selectedBrand.length === 0 || this.selectedBrand.includes(item.name);
-                let MinMax=this.selectedPrice.length>0?this.returnMinMaxPricerange():true;
                 let matchPriceRange = this.selectedPrice.length === 0 || (this.selectedPrice.length?(MinMax.min)<=item.price && (MinMax.max)>item.price:MinMax);
                 let matchColor=this.selectedColor.length === 0 || this.selectedColor.includes(item.color);
                 let matchRatings= this.ratings.value === 0 || (item.rating >= this.ratings.value && item.rating <= this.ratings.max);
@@ -51,11 +72,18 @@ export default{
           
           search(searchValue)
           {
-                   this.filterProducts=[...this.products];
-                  if(searchValue){
-                 let filteredItems=this.filterProducts.filter(item=> item.name.toLowerCase().includes(searchValue.toLowerCase()));
-                  this.filterProducts=[...filteredItems]
-                  }
+            console.log(searchValue)
+                //    this.filterProducts=[...this.products];
+                //   if(searchValue){
+                //  let filteredItems=this.filterProducts.filter(item=> item.name.toLowerCase().includes(searchValue.toLowerCase()));
+                //   this.filterProducts=[...filteredItems]
+                //   }
+                if(searchValue){
+                this.fetchProducts(searchValue);
+                }
+                else{
+                    this.fetchProducts("all")
+                }
           },
 
           cartpage(value){
@@ -64,11 +92,6 @@ export default{
           }
         
           
-    },
-    computed:{
-        // ...mapGetters(['information']),    
-        ...mapGetters(['user','products']),
-       
     },
     data(){
         return{
@@ -82,17 +105,18 @@ export default{
             selectedColor: [],
             selectedPrice:[],
             ratings:{min:1,max:5,value:0},
-            filterProducts:[ { img:"https://m.media-amazon.com/images/I/81B0HJigO-L._AC_UY436_FMwebp_QL65_.jpg",name: "Redmi", ram: 8, memory: 25000, rating: 5, price:25000,stock:4,color:'red',model:'Redmi note 10' }, 
-            { img:"https://m.media-amazon.com/images/I/81QqVNKWtML._AC_UY436_FMwebp_QL65_.jpg",name: "Realme", ram: 16, memory: 35000, rating: 3 ,price:35000,stock:3,color:'green',model:'Realme 10'},
-            { img:"https://m.media-amazon.com/images/I/61vBPptSghL._AC_UY436_FMwebp_QL65_.jpg",name: "Vivo", ram: 4, memory: 45000, rating: 2 ,price:45000,stock:2,color:'gold',model:'Vivo y16'}, 
-            { img:"https://m.media-amazon.com/images/I/61PHOWOZh0L._AC_UY436_FMwebp_QL65_.jpg",name: "Poco", ram: 8, memory: 19000, rating: 3 ,price:55000,stock:0,color:'silver',model:'Poco m4'},
-            { img:"https://m.media-amazon.com/images/I/81QVLzeVckL._AC_UY436_FMwebp_QL65_.jpg",name: "Samsung", ram: 4, memory: 24000, rating: 2 ,price:65000,stock:1,color:'red',model:"Samsung galaxy s20"}, 
-            { img:"https://m.media-amazon.com/images/I/617MPEZB5mL._AC_UY436_FMwebp_QL65_.jpg",name: "Oneplus", ram: 8, memory: 21000, rating: 5,price:75000,stock:6,color:'green' ,model:"Oneplus nord 2T"},
-            { img:"https://m.media-amazon.com/images/I/41hI-UvnhFL._AC_UY416_FMwebp_QL65_.jpg",name: "Poco", ram: 8, memory: 19000, rating: 3 ,price:55000,stock:22,color:'green',model:'Poco C31'},
-            { img:"https://m.media-amazon.com/images/I/91W42b8YW+L._AC_UY436_FMwebp_QL65_.jpg",name: "Samsung", ram: 4, memory: 24000, rating: 2 ,price:65000,stock:23,color:'red',model:"Samsung Galaxy A23"}, 
-            { img:"https://m.media-amazon.com/images/I/71BoiXkrEmL._AC_UY436_FMwebp_QL65_.jpg",name: "Oneplus", ram: 8, memory: 21000, rating: 5,price:75000,stock:20 ,color:'silver',model:"Oneplus 10R"},
-            { img:"https://m.media-amazon.com/images/I/61+OLKs47OL._AC_UY436_FMwebp_QL65_.jpg",name: "Poco", ram: 8, memory: 19000, rating: 3 ,price:55000,stock:0,color:'silver',model:"Poco x4 pro"}
-            ]
+            filterProducts:[]
+            // filterProducts:[ { img:"https://m.media-amazon.com/images/I/81B0HJigO-L._AC_UY436_FMwebp_QL65_.jpg",name: "Redmi", ram: 8, memory: 25000, rating: 5, price:25000,stock:4,color:'red',model:'Redmi note 10' }, 
+            // { img:"https://m.media-amazon.com/images/I/81QqVNKWtML._AC_UY436_FMwebp_QL65_.jpg",name: "Realme", ram: 16, memory: 35000, rating: 3 ,price:35000,stock:3,color:'green',model:'Realme 10'},
+            // { img:"https://m.media-amazon.com/images/I/61vBPptSghL._AC_UY436_FMwebp_QL65_.jpg",name: "Vivo", ram: 4, memory: 45000, rating: 2 ,price:45000,stock:2,color:'gold',model:'Vivo y16'}, 
+            // { img:"https://m.media-amazon.com/images/I/61PHOWOZh0L._AC_UY436_FMwebp_QL65_.jpg",name: "Poco", ram: 8, memory: 19000, rating: 3 ,price:55000,stock:0,color:'silver',model:'Poco m4'},
+            // { img:"https://m.media-amazon.com/images/I/81QVLzeVckL._AC_UY436_FMwebp_QL65_.jpg",name: "Samsung", ram: 4, memory: 24000, rating: 2 ,price:65000,stock:1,color:'red',model:"Samsung galaxy s20"}, 
+            // { img:"https://m.media-amazon.com/images/I/617MPEZB5mL._AC_UY436_FMwebp_QL65_.jpg",name: "Oneplus", ram: 8, memory: 21000, rating: 5,price:75000,stock:6,color:'green' ,model:"Oneplus nord 2T"},
+            // { img:"https://m.media-amazon.com/images/I/41hI-UvnhFL._AC_UY416_FMwebp_QL65_.jpg",name: "Poco", ram: 8, memory: 19000, rating: 3 ,price:55000,stock:22,color:'green',model:'Poco C31'},
+            // { img:"https://m.media-amazon.com/images/I/91W42b8YW+L._AC_UY436_FMwebp_QL65_.jpg",name: "Samsung", ram: 4, memory: 24000, rating: 2 ,price:65000,stock:23,color:'red',model:"Samsung Galaxy A23"}, 
+            // { img:"https://m.media-amazon.com/images/I/71BoiXkrEmL._AC_UY436_FMwebp_QL65_.jpg",name: "Oneplus", ram: 8, memory: 21000, rating: 5,price:75000,stock:20 ,color:'silver',model:"Oneplus 10R"},
+            // { img:"https://m.media-amazon.com/images/I/61+OLKs47OL._AC_UY436_FMwebp_QL65_.jpg",name: "Poco", ram: 8, memory: 19000, rating: 3 ,price:55000,stock:0,color:'silver',model:"Poco x4 pro"}
+            // ]
         }
     }
 

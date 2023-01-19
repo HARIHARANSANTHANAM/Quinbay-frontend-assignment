@@ -16,8 +16,9 @@
                 <a href="products.html" >Products</a>
                 <a href="#" >Contactus</a> -->
                 <a @click="moveToCart" href="#">{{cart.length==0?'Cart':('Cart '+cart.length)}}</a>
-                <a class="username">hi, {{user.userName}}</a>
-                <button class="btn warning" @click="Logout">Logout</button>
+                <a class="username">{{!user.guest?'hi,':''}} {{user.userName}}</a>
+                <button class="btn warning" @click="Logout" v-if="!user.guest">Logout</button>
+                <button class="btn warning" @click="toSigninPage" v-if="user.guest">Login</button>
             </nav>
             <nav class="show-sm">
 

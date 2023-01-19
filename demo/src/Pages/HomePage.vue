@@ -1,6 +1,6 @@
 <template>
 <div id="body">
-    <HeaderComponent @search="search" @cart="cartpage"/>
+    <HeaderComponent @search="search"/>
     <div class="body">
     <aside>
         <section>
@@ -66,7 +66,8 @@
     <section class="mobiles">
         <h3>List of mobiles</h3>
         <div class="cards" id="cards">
-        <div class="card" v-for="(product,index) in filterProducts" :key="index">
+        <ProductCardComponent v-for="(product,index) in filterProducts" :key="index" :product="product"/>
+        <!-- <div class="card" v-for="(product,index) in filterProducts" :key="index">
             <div class="image">
                 <img :src="product.img" :alt="product.model">    
             </div>
@@ -77,7 +78,7 @@
              
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star che cked"></span>
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>|
                     {{product.rating}} Ratings<br>
@@ -88,7 +89,7 @@
             </div>
             </div>
             <button class="btn success" @click="addtoCart(product)" :disabled="product.stock<1">Add to Cart</button>
-        </div>  
+        </div>   -->
     </div>
     </section>
     <!-- <div id="cart" class="cart container">
