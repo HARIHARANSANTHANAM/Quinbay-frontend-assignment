@@ -66,53 +66,15 @@
         </section>
     </aside>
     <section class="mobiles">
-        <h3>List of mobiles</h3>
+        <h3>List of Products</h3>
         <div class="cards" id="cards">
         <ProductCardComponent v-for="(product,index) in filterProducts" :key="index" :product="product"/>
-        <!-- <div class="card" v-for="(product,index) in filterProducts" :key="index">
-            <div class="image">
-                <img :src="product.img" :alt="product.model">    
-            </div>
-            <div class="info">
-            <div style="padding:.5rem">
-            <h6>{{product.model}}</h6>
-                brand: {{product.name}}
-             
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star che cked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>|
-                    {{product.rating}} Ratings<br>
-                    <h6>Color:{{product.color}}</h6>
-                    <h2 style="text-align:end">$ {{product.price | CurrencySepeartor}}</h2>
-                     <h6 v-if="product.stock">Stock: {{product.stock}}</h6>
-                    <h6 :class="{'warning-text':true}" v-else>Unavailable</h6>
-            </div>
-            </div>
-            <button class="btn success" @click="addtoCart(product)" :disabled="product.stock<1">Add to Cart</button>
-        </div>   -->
+ 
     </div>
     </section>
-    <!-- <div id="cart" class="cart container">
-
-        <div>
-            Shopping Cart
-        </div> <br>
-        <div class="cart_products" id="cart_products">
-    </div>
-        
-
-    </div> -->
+    
 </div>
-<!-- <footer>
 
-    <h5 class="content">
-    All rights are reserved Copyrights@2023
-</h5>
-
-<button class="btn" onclick="checkout()">Check out</button>
-</footer> -->
 
 </div>
 </template>

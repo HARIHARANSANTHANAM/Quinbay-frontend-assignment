@@ -2,15 +2,10 @@ import { mapActions ,mapGetters} from "vuex";
 
 export default{
     computed:{
-        ...mapGetters(['users'])
+        ...mapGetters('userStore',['users'])
     },
     methods:{
-        ...mapActions(['AUTH_LOGIN','AUTH_LOGOUT']),
-        // toSigninPage()
-        // {
-        //     this.AUTH_LOGIN({guest:false});
-        //     this.$router.push('/');
-        // },
+        ...mapActions('userStore',['AUTH_LOGIN','AUTH_LOGOUT']),
         Logout(){
             alert("Logged Out!!")
             this.AUTH_LOGOUT();
@@ -21,7 +16,7 @@ export default{
                 let user=this.users.find((user)=>this.userName===user.userName && user.password===this.password);
                 console.log(user)
                 if(user){
-                 this.AUTH_LOGIN(user);
+             this.AUTH_LOGIN(user);
 
                 this.$router.push({path:'/home'})
                 }

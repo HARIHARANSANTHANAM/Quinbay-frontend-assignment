@@ -3,8 +3,8 @@ import {mapActions, mapGetters} from 'vuex'
 
 export default {
     methods:{
-        ...mapActions(['PRODUCT_ADD_TO_CART']),
-        ...mapGetters(['cart']),
+        ...mapActions('productStore',['PRODUCT_ADD_TO_CART']),
+        ...mapGetters('productStore',['cart']),
         addToCart(product){
 
             const productFound=cart?.length>0 && cart.find((cart)=>cart.formattedId === payload?.formattedId);

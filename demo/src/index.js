@@ -1,5 +1,5 @@
-import HomePage from './Pages/HomePage.vue';
-import ProductDescriptionPage from './Pages/ProductDescriptionPage.vue';
+import HomePage from './pages/HomePage.vue';
+import ProductDescriptionPage from './pages/ProductDescriptionPage.vue';
 import Login from './components/LoginComponent.vue';
 import VueRouter from 'vue-router';
 

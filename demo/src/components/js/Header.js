@@ -7,9 +7,10 @@ export default {
     props:{
         brand:String
     },
+
     mixins:[Login],
     computed:{
-        ...mapGetters(['user'])
+        ...mapGetters('userStore',['user'])
     },
     watch:{
         searchQuery: debounce(function (newVal) {
@@ -18,7 +19,14 @@ export default {
     },
     data(){
         return{
-            searchQuery:''
+            searchQuery:'',
+            isSidebarOpened:false
+        }
+    },
+    methods:{
+        toggleSidebar(){
+        
+            this.isSidebarOpened=!this.isSidebarOpened;
         }
     }
 }

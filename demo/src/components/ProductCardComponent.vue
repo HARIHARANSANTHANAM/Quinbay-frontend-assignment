@@ -8,11 +8,9 @@
             <h6 class="product_name">{{product.name}}</h6>
                 <h6 style="font-weight:bold">{{product.brand?product.brand:''}}</h6>    
                     <br>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>|
+                    <span v-for="(starcount,starindex) in [1,2,3,4,5]" :key="starindex">
+                        <span :class="starcount<=product?.review?.rating?'fa fa-star checked':'fa fa-star'"/>
+                    </span>|
                     {{product.review.rating}} Ratings
                     
                     <br><br>

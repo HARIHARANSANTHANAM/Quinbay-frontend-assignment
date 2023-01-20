@@ -3,7 +3,7 @@ import Login from '../../mixins/Login';
 export default {
     name:"LoginComponent",
     computed:{
-        ...mapGetters(['users'])
+        ...mapGetters('userStore',['users'])
     },
     mixins:[Login],
     data(){

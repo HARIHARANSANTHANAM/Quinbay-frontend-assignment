@@ -7,12 +7,10 @@ export default{
        }
     },
     methods:{
-        addtoCart(product){
-            product.stock-=1;
-            this.updateCart(product);
-        },
+        // addtoCart(product){
+        //     this.updateCart(product);
+        // },
         showProductPage(){
-            console.log(this.product)
             this.$router.push({name:'ProductDescriptionPage',query:{productId:this.product?.formattedId}})
         }
     }

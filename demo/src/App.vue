@@ -11,7 +11,7 @@ import {mapActions} from 'vuex';
 export default {
   name: 'App',
   methods:{
-    ...mapActions(['AUTH_LOGIN'])
+    ...mapActions('userStore',['AUTH_LOGIN'])
   },
   created(){
     if(localStorage.getItem('user')){
