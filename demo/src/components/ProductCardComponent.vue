@@ -22,7 +22,7 @@
                     <!-- <h6 :class="{'warning-text':true}" v-else>Unavailable</h6> -->
             </div>
             </div>
-            <button class="btn success" @click="addtoCart(product)" :disabled="product.stock<1">Add to Cart</button>
+            <button class="btn" @click="addtoCart(product)" :disabled="product.stock<1">Add to Cart</button>
         </div>
         
 </template>

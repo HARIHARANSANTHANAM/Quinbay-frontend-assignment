@@ -5,23 +5,25 @@ export default{
         ...mapGetters(['users'])
     },
     methods:{
-        ...mapActions(['checkLogin']),
-        toSigninPage()
-        {
-            this.checkLogin({guest:false});
-        },
+        ...mapActions(['AUTH_LOGIN','AUTH_LOGOUT']),
+        // toSigninPage()
+        // {
+        //     this.AUTH_LOGIN({guest:false});
+        //     this.$router.push('/');
+        // },
         Logout(){
             alert("Logged Out!!")
-            this.setLogout()
+            this.AUTH_LOGOUT();
+            this.$router.push('/')
         },
         signin(e){
             e.preventDefault();
                 let user=this.users.find((user)=>this.userName===user.userName && user.password===this.password);
                 console.log(user)
                 if(user){
-                    user.guest=false;
-                // this.checkLogin(user);
-                this.$router.push({path:'/home',query:{id:1}})
+                 this.AUTH_LOGIN(user);
+
+                this.$router.push({path:'/home'})
                 }
                 else{
                     alert("Invalid Username and Password")
@@ -29,7 +31,7 @@ export default{
          },
          signinAsGuest(){
             let guestuser={guest:true}
-            this.checkLogin(guestuser)
+            this.AUTH_LOGIN(guestuser)
          }
     }
 }

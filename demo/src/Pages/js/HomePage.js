@@ -12,19 +12,36 @@ export default{
     computed:{
         // ...mapGetters(['information']),    
         ...mapGetters(['user','products']),
-        ...mapActions(['setProducts']),
+        ...mapActions(['POST_PRODUCTS']),
     
     },
     created(){
-        console.log(this.$router.query)
+        console.log(this.$route.query)
        this.fetchProducts("all")
     },
     methods:{
-
+        async changeUser(){
+            try{
+                const res=await axios.put(`https://63c8ecef904f040a9652af79.mockapi.io/users/users/1`,{name:'Hariharan'});
+               console.log(res);
+            }
+            catch(e){
+                console.log(e); 
+            }
+        },
+        async deleteUser(){
+            try{
+                const res=await axios.delete(`https://63c8ecef904f040a9652af79.mockapi.io/users/users/1`);
+               console.log(res);
+            }
+            catch(e){
+                console.log(e); 
+            }
+        },
        async fetchProducts(searchValue){
         try{
             const res=await axios.get(`https://www.blibli.com/backend/search/products?searchTerm=${searchValue}&start=0&itemPerPage=24`);
-             this.$store.dispatch('setProducts',res.data.data.products);
+             this.$store.dispatch('POST_PRODUCTS',res.data.data.products);
              this.filterProducts=[...res.data.data.products];
             console.log(res.data.data.products);
             }

@@ -1,4 +1,4 @@
-import {mapGetters,mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 import Login from '../../mixins/Login'
 import debounce from '../../helpers/debounce.js'
 
@@ -9,13 +9,7 @@ export default {
     },
     mixins:[Login],
     computed:{
-        ...mapGetters(['user','cart'])
-    },
-    methods : {
-        ...mapActions(['checkLogin','setLogout']),
-        moveToCart(){
-            this.$emit('cart',true)
-        }
+        ...mapGetters(['user'])
     },
     watch:{
         searchQuery: debounce(function (newVal) {

@@ -5,7 +5,8 @@
  
   <!-- Left Column / Headphones Image -->
   <div class="left-column">
-    <!-- <img  :src="image" alt=""> -->
+ <!-- {{product.images[0]}} -->
+   <img  :src="getImage()" alt="" />
   </div>
  
  
@@ -14,9 +15,9 @@
  
     <!-- Product Description -->
     <div class="product-description">
-      <span>{{product.name}}</span>
-      <h1>{{product.brand}}</h1>
-      <p v-html="product.uniqueSellingPoint?product.uniqueSellingPoint:''"></p>
+      <span>{{product?.name}}</span>
+      <h1>{{product?.brand?.name}}</h1>
+      <p v-html="product?.uniqueSellingPoint?product.uniqueSellingPoint:''"></p>
     </div>
  
     <!-- Product Configuration -->
@@ -28,7 +29,7 @@
         <span>tags</span>
  
         <div class="cable-choose" >
-          <button v-for="(tags,index) in product.tags" :key="index">{{tags}}</button>
+          <button v-for="(tags,index) in product?.tags" :key="index">{{tags}}</button>
         </div>
  
         <a href="#" class="anchor">How to configurate your product</a>
@@ -70,17 +71,17 @@
   margin-top: 60px;
 }
 .left-column img {
-  width: 100%;
+  width: 95%;
   position: absolute;
+  height: 100%;
   left: 0;
   top: 0;
-  opacity: 0;
+  display: block;
   transition: all 0.3s ease;
+  object-fit: contain;
 }
  
-.left-column img.active {
-  opacity: 1;
-}
+
 /* Product Description */
 .product-description {
   border-bottom: 1px solid #E1E8EE;
@@ -171,15 +172,17 @@
   .left-column img {
     width: 300px;
     right: 0;
-    top: -65px;
+    margin: auto;
     left: initial;
+     position: relative;
   }
 }
  
 @media (max-width: 535px) {
   .left-column img {
     width: 220px;
-    top: -85px;
+    margin:auto;
+    position: relative;
   }
 }
 </style>

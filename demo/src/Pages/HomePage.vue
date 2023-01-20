@@ -4,6 +4,8 @@
     <div class="body">
     <aside>
         <section>
+        <!-- <button @click="changeUser()">change User</button>
+        <button @click="deleteUser()">Delete User</button> -->
         <h3><center>Filters</center></h3>
         <hr>
         <div class="container">

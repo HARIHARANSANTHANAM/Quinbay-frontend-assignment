@@ -6,19 +6,15 @@
             
             <div class="search_nav_container">
             <div class="searchcontainer"> 
-                <form id="searchform" style="display:flex" @submit.prevent="searchProduct">
+                <form id="searchform" style="display:flex" >
             <input type="text" placeholder="Search.." class="search" v-model="searchQuery">
             <button class="searchBtn" style="cursor:pointer" >Search</button>
         </form>
             </div>
             <nav>
-                <!-- <a href="#">Home</a>
-                <a href="products.html" >Products</a>
-                <a href="#" >Contactus</a> -->
-                <a @click="moveToCart" href="#">{{cart.length==0?'Cart':('Cart '+cart.length)}}</a>
-                <a class="username">{{!user.guest?'hi,':''}} {{user.userName}}</a>
-                <button class="btn warning" @click="Logout" v-if="!user.guest">Logout</button>
-                <button class="btn warning" @click="toSigninPage" v-if="user.guest">Login</button>
+                <a class="username">hi, {{user?.userName}}</a>
+                <button class="btn warning" @click="Logout" >Logout</button>
+                <!-- <button class="btn warning" @click="toSigninPage" v-else>Login</button> -->
             </nav>
             <nav class="show-sm">
 

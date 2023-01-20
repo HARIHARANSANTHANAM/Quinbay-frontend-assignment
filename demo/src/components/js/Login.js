@@ -1,10 +1,7 @@
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import Login from '../../mixins/Login';
 export default {
     name:"LoginComponent",
-    methods : {
-        ...mapActions(['checkLogin']),
-    },
     computed:{
         ...mapGetters(['users'])
     },
