@@ -1,5 +1,5 @@
 <template>
-   <div class="card" @click="showProductPage">
+   <div class="card" >
             <div class="image">
                 <img :src="product.images[0]" :alt="product.name">    
             </div>
@@ -20,7 +20,9 @@
                     <!-- <h6 :class="{'warning-text':true}" v-else>Unavailable</h6> -->
             </div>
             </div>
-            <button class="btn" @click="addtoCart(product)" :disabled="product.stock<1">Add to Cart</button>
+            <button class="btn btn-light" @click="showProductPage">View More</button>
+            <button class="btn btn-primary" @click="addToCart(product)" ><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="ml-4">Add to Cart</span></button>
+            
         </div>
         
 </template>

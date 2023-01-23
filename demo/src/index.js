@@ -2,6 +2,8 @@ import HomePage from './pages/HomePage.vue';
 import ProductDescriptionPage from './pages/ProductDescriptionPage.vue';
 import Login from './components/LoginComponent.vue';
 import VueRouter from 'vue-router';
+import ShoppingCartPage from './pages/ShoppingCartPage.vue'
+import ThankYouPage from './pages/ThankYouPage.vue';
 
 
 const routerconfig=new VueRouter({
@@ -17,6 +19,16 @@ const routerconfig=new VueRouter({
             name:'LoginComponent',
             component:Login
         },
+        {
+          path:'/Cart',
+          name:'ShoppingCartPage',
+          component:ShoppingCartPage
+      },
+      {
+        path:'/Thankyou',
+          name:'ThankYouPage',
+          component:ThankYouPage
+      },
     {
         path:'/product',
         name:'ProductDescriptionPage',

@@ -58,7 +58,7 @@
                    
                       <br>
                       <center>
-                      <button class="btn" @click="filterResults">Apply Filters</button>
+                      <button class="btn btn-primary" @click="filterResults">Apply Filters</button>
                     </center>
             </form>
         </div>

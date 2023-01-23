@@ -39,16 +39,9 @@ const productStore={
             fail
           })
          
-        },
-        // PRODUCT_ADD_TO_CART({commit},product)
-        // {
-        //   commit('addToCart',product)
-        // }
+        }
     },
     getters:{
-        cart(state){
-            return state.cart;
-        },
         products(state)
         {
           return state.products;

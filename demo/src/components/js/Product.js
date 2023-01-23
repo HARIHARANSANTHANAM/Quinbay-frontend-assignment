@@ -1,3 +1,6 @@
+import { mapActions} from "vuex";
+import Productmixin from '../../mixins/Product' 
+
 export default{
     name:'ProductComponent',
     props:{
@@ -6,10 +9,9 @@ export default{
         default:{}
        }
     },
+    mixins:[Productmixin],
     methods:{
-        // addtoCart(product){
-        //     this.updateCart(product);
-        // },
+        ...mapActions('cartStore',['PRODUCT_ADD_TO_CART']),
         showProductPage(){
             this.$router.push({name:'ProductDescriptionPage',query:{productId:this.product?.formattedId}})
         }

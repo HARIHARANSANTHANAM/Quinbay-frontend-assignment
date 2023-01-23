@@ -1,64 +1,59 @@
 <template>
     <div>
-        <button @click="backToHome()">Back</button>
-           My Cart
-           <hr>
+    <HeaderComponent/>
+   
+            <br>
            <div class="cart_products" id="cart_products">
-
-                <div class="cart_product" v-for="(product,index) in cart" :key="index">
-        <div class="cart_product_img">
-            <img :src='product.img' :alt="product.name" width="50" height="70"/>
-        </div>
-        <div class="cart_product_info">
-                <div class="product_title">
-                    <h6 style="font-style:oblique">{{product.name}}</h6>
-                    <div class="quantity">
-                        <button class="btn" >+</button>
-                        <span class="quantity">1</span>
-                        <button class="btn" >-</button>
-                    </div>
-                    <h4 style="text-align:end">{{product.price}}</h4>
-                </div>
-        </div>
-    </div>
+           <div class="list_products">
+           <div class="container bg-light" style="position:relative">
+            <h6 class="fw-bold mb-5 mt-2" style="position: absolute; top: 0;cursor:pointer" @click="$router.go(-1)">
+                   <i class="fas fa-angle-left me-2"></i>Back 
+            </h6>
+                  <br>
+              <h3>Shopping Cart</h3>
+              <hr/>
+              <p v-if="!fetchCartDetails.length">Cart Is Empty!</p>
+           <div v-for="(product,index) in  fetchCartDetails" :key="index">
+        
+            <CartComponent :product="product" :index="index"/>                
+            </div>
+           </div>
+           
+           </div>
+            <div class="checkout container sticky-top" v-if="fetchCartDetails.length">
+                    <PaymentComponent/>
+            </div>
            </div>
            <!-- <hr/> -->
     </div>
     
 </template>
 
-<script src="./js/cart.js"/>
+<script src="./js/shoppingCart.js"/>
 <style scoped>
-  .cart_product{
+.cart_products{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
-    align-items: center;
-    padding:0rem 1rem;
-    background-color: rgb(220, 217, 217);
-    margin:.5rem;
-    border-radius:10px;
-  }
-
-  .cart_products{
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    height: 90vh;
-    overflow: auto;
-  }
-
-  .quantity{
-    display: flex;
-  }
-  
-  .cart_product_info .product_title{
-    padding: .5rem;
-  }
-@media (max-width:630px){
-   
+}
+.btn-block{
+    display: block;
+}
+.cart_products .list_products{
+    display: block;
+    flex: .7;
+}
+.checkout_section{
+    border-radius: .5rem;
+}
+.checkout{
+    flex: .3;
 }
 
-@media (min-width : 631px) and (max-width:900px) {
+@media (max-width:630px){
+    .cart_products{
+        display: block;
+    }
     
 }
 </style>

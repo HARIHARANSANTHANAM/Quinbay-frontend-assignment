@@ -8,20 +8,20 @@
             <div class="searchcontainer"> 
                 <form id="searchform" style="display:flex" >
             <input type="text" placeholder="Search.." class="search" v-model="searchQuery">
-            <button class="searchBtn" style="cursor:pointer" >Search</button>
-        </form>
+          </form>
+
             </div>
             <nav>
+                <i @click="fetchCartPage" class="fa fa-shopping-cart badge" aria-hidden="true" :value="getCart?.length" style=" color: white;margin: auto;cursor:pointer;font-size:20px">'</i>
                 <a class="username">hi, {{user?.userName}}</a>
-                <button class="btn warning" @click="Logout" >Logout</button>
-                <!-- <button class="btn warning" @click="toSigninPage" v-else>Login</button> -->
+                <button class="btn btn-dark" @click="Logout" >Logout</button>
             </nav>
             <div :class="[isSidebarOpened?'show-sm-open':'show-sm']">
                 <div class="sidebar-container">
-                <button @click="toggleSidebar()" dir="rtl">close</button>
-                <a href="#">Home</a>
-                <a href="products.html" >Products</a>
-                <a href="#" >Contactus</a>
+                <i @click="toggleSidebar()" class="fa fa-times-circle fa-2xl" style="position:absolute;right:1rem;color:white;top:1rem" aria-hidden="true"></i>
+                <a href="/home" class="nav-link align-middle px-0"><i  class="fa fa-home" aria-hidden="true" ></i><span class="ms-3">Home</span></a>
+                <a href="#" class="nav-link align-middle px-0"><i  class="fa fa-phone" aria-hidden="true"  style="color:black;margin: auto;cursor:pointer;font-size:20px"></i><span class="ms-3">Contactus</span></a>
+                 <a @click="fetchCartPage" class="nav-link align-middle px-0"><i  class="fa fa-shopping-cart badge" aria-hidden="true" :value="getCart?.length" style="color:black;cursor:pointer;font-size:20px">'</i><span class="ms-2">Cart</span></a>
                 </div>
             </div>
         </div>
@@ -45,6 +45,20 @@
     width:100%;
     background-color: #2874f0;
 }
+.badge:after{
+        content:attr(value);
+        font-size:12px;
+        font-family: sans-serif;
+        color: #fff;
+        background: red;
+        border-radius:50px;
+        padding: 0 5px;
+        position:relative;
+        left:-8px;
+        top:-10px;
+        opacity:0.9;
+    }
+
 
 .header .logo{
     height:50px;

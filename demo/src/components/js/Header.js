@@ -10,7 +10,8 @@ export default {
 
     mixins:[Login],
     computed:{
-        ...mapGetters('userStore',['user'])
+        ...mapGetters('userStore',['user']),
+        ...mapGetters('cartStore',['getCart'])
     },
     watch:{
         searchQuery: debounce(function (newVal) {
@@ -27,6 +28,9 @@ export default {
         toggleSidebar(){
         
             this.isSidebarOpened=!this.isSidebarOpened;
+        },
+        fetchCartPage(){
+            this.$router.push('/Cart')
         }
     }
 }
